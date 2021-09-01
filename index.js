@@ -47,4 +47,4 @@ app.get('/', function (req, res) {
   res.send('hello world')
 })
 
-app.listen(4008, () => console.log('Listening from port'))
+app.listen(process.env.PORT || 4008, () => console.log('Listening from port'))
