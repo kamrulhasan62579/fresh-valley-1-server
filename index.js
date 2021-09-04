@@ -38,6 +38,22 @@ client.connect(err => {
        })
    })
 
+// cheakOutData
+const cheakOutCollection = client.db("fresh-valley").collection("orderData");
+app.post('/cheakOutData', (req, res) => {
+    cheakOutCollection.insertOne(req.body)
+    .then(result =>{
+        res.send(result.insertedCount < 0)
+        console.log('Data inserted Successfully')
+    })
+})
+app.get('/cheakOutData', (req, res) => {
+    cheakOutCollection.find({})
+    .toArray((err, documents) =>{
+        res.send(documents)
+    })
+})
+
 
 
 });
